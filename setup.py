@@ -11,7 +11,7 @@ setup(
     description="OpenWISP 2 Utilities",
     long_description=open("README.rst").read(),
     url="http://openwisp.org",
-    download_url="https://github.com/openwisp/openwisp-utils/releases",
+    #download_url="https://github.com/openwisp/openwisp-utils/releases",
     platforms=["Platform Independent"],
     keywords=["django", "netjson", "openwrt", "networking", "openwisp"],
     packages=find_packages(exclude=["tests*", "docs*"]),
