@@ -19,8 +19,8 @@
     container = document.getElementById("plot-container");
 
   const layout = {
-      height: 450,
-      width: 450,
+      height: 300,
+      width: 340,
       margin: {
         t: 0,
         b: 0,
