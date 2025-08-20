@@ -620,11 +620,11 @@ div#toolbar form input[type="submit"]:hover {
   text-transform: uppercase;
 }
 #container .object-tools a.addlink {
-  background-image: url(../../ui/openwisp/images/add.svg);
+/*   background-image: url(../../ui/openwisp/images/add.svg); */
   background-repeat: no-repeat;
   background-size: 1.35rem;
   background-position: 0.5rem 43%;
-  padding-left: 1.9rem;
+/*   padding-left: 1.9rem; */
 }
 .default-btn:hover,
 .default-btn:active,
