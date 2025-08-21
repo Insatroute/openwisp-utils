@@ -1396,7 +1396,7 @@ h1#site-name {
 
   .toggle-menu .menu-item,
   .toggle-menu .mg-head {
-    justify-content: center;
+    justify-content: left;
     width: auto;
   }
   .toggle-menu #menu .nav {
