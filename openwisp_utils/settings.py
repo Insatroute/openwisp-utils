@@ -8,9 +8,9 @@ API_INFO = getattr(
     settings,
     "OPENWISP_API_INFO",
     {
-        "title": "OpenWISP API",
+        "title": "Nexapp API",
         "default_version": "v1",
-        "description": "OpenWISP REST API",
+        "description": "Nexapp REST API",
     },
 )
 
