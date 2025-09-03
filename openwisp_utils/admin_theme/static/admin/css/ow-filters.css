@@ -15,7 +15,7 @@
   margin: 0px;
 }
 #ow-apply-filter {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   line-height: 20px;
   padding: 0.4rem 0.8rem;
@@ -139,7 +139,7 @@
   padding: 0px 0.6rem;
   position: relative;
   letter-spacing: 0.5px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .ow-filter.ow-active .filter-title {
   border-color: #df5d43;

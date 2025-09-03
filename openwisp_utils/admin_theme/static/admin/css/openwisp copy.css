@@ -22,27 +22,6 @@ See https://code.djangoproject.com/ticket/33878 */
   font-style: normal;
 }
 
-/* @font-face {
-  font-family: "Poppins";
-  src: url("../fonts/Poppins-Bold.ttf");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../fonts/Poppins-Regular.ttf");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../fonts/Poppins-Light.ttf");
-  font-weight: 300;
-  font-style: normal;
-} */
-
 /* VARIABLE DEFINITIONS TO PREVENT DARK MODE */
 :root {
   --primary: #79aec8 !important;
@@ -95,7 +74,7 @@ See https://code.djangoproject.com/ticket/33878 */
   --object-tools-bg: var(--close-button-bg) !important;
   --object-tools-hover-bg: var(--close-button-hover-bg) !important;
   --font-family-primary:
-    "Poppins", "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
+    "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
     Arial, sans-serif;
 }
 body {
@@ -130,7 +109,7 @@ div[class^="app-"].module td {
 #main-content .results thead th .text a,
 #main-content thead th {
   padding: 15px 10px;
-  font-size: 12.5px;
+  font-size: 13.5px;
 }
 #main-content .results tbody td,
 #main-content .results tbody th,
@@ -138,10 +117,10 @@ div#main-content table tbody th,
 div#main-content table tbody td {
   padding: 1rem 10px;
   vertical-align: middle;
-  font-size: 13px;
+  font-size: 14px;
 }
 #main-content .breadcrumbs {
-  font-size: 13px;
+  font-size: 15px;
 }
 /* Standard links (no need to stand out) */
 table thead th.sorted .sortoptions a.sortremove:focus:after,
@@ -168,7 +147,7 @@ fieldset.collapsed a.collapse-toggle,
 fieldset a.collapse-toggle,
 a.highlighted,
 a.highlighted:visited {
-  color: #e2802b;
+  color: #df5d43;
   text-decoration: none;
 }
 #main-content .breadcrumbs a:hover,
@@ -209,12 +188,12 @@ fieldset.module h2,
   border-color: var(--hairline-color);
 }
 #changelist-filter li.selected a {
-  color: #e2802b !important;
+  color: #df5d43 !important;
 }
 #netjsonconfig-hint,
 #netjsonconfig-hint a,
 #container .field-backend a {
-  color: #e2802b;
+  color: #df5d43;
 }
 #main .form-row label {
   color: #1b1818;
@@ -224,7 +203,7 @@ fieldset.module h2,
 #main .form-row .helptext,
 #container #main-content .help,
 #container #main-content .helptext {
-  font-size: 12px !important;
+  font-size: 14px !important;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.45);
 }
@@ -248,7 +227,7 @@ fieldset.module h2,
 #main .aligned .selector-available-title label,
 #main .aligned .selector-chosen-title label,
 fieldset.module h2 {
-  font-size: 14px;
+  font-size: 16px;
 }
 #content fieldset .fieldset-heading,
 #content fieldset .inline-heading {
@@ -256,7 +235,7 @@ fieldset.module h2 {
 }
 #main .inline-related h3 {
   padding: 15px;
-  font-size: 13px;
+  font-size: 15px;
   background: #f9f9f9;
   margin-top: 0px;
   color: var(--body-quiet-color);
@@ -264,17 +243,17 @@ fieldset.module h2 {
   border-bottom: 1px solid var(--hairline-color);
 }
 .inline-related fieldset.module h4 {
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 15px;
 }
 td,
 th,
 li {
-  font-size: 12px;
+  font-size: 14px;
 }
 .mini {
-  font-size: 10px;
+  font-size: 12px;
 }
 #main .actionlist li {
   line-height: 20px;
@@ -288,7 +267,7 @@ select,
 form .button,
 .readonly,
 #main .form-row {
-  font-size: 12px;
+  font-size: 15px;
 }
 select:not([disabled]):not(.readonly) {
   background: #fff;
@@ -369,13 +348,13 @@ select {
 }
 #main .add-row td a,
 #main div.add-row a {
-  font-size: 13px !important;
+  font-size: 15px !important;
 }
 #main .delete input {
   vertical-align: -1px;
 }
 #main .delete label {
-  font-size: 12px;
+  font-size: 14px;
 }
 #main ul.messagelist li {
   padding: 15px 10px 15px 65px;
@@ -493,14 +472,14 @@ span.datetimeshortcuts .date-icon {
   -webkit-mask: url(../../ui/openwisp/images/date.svg) no-repeat center;
   -webkit-mask-size: contain;
   -webkit-mask: contain;
-  background: #e2802b;
+  background: #df5d43;
 }
 span.datetimeshortcuts .clock-icon {
   mask: url(../../ui/openwisp/images/clock.svg) no-repeat center;
   -webkit-mask: url(../../ui/openwisp/images/clock.svg) no-repeat center;
   -webkit-mask-size: contain;
   -webkit-mask: contain;
-  background: #e2802b;
+  background: #df5d43;
 }
 span.datetimeshortcuts .date-icon:hover,
 span.datetimeshortcuts .clock-icon:hover {
@@ -537,7 +516,7 @@ div.submit-row a.deletelink,
   display: inline-block;
   text-align: center;
   border-radius: 4px;
-  background: #e2802b;
+  background: #df5d43;
   cursor: pointer;
   border: 0;
   padding: 0.625rem 1rem;
@@ -582,15 +561,13 @@ a.button,
   display: inline-block;
   text-align: center;
   border-radius: 4px;
-  /* background: #333; */
-  background: #24415d;
+  background: #333;
   cursor: pointer;
   border: 0;
   padding: 0.625rem 1rem;
   color: #fff;
   font-weight: 500;
-  font-size: 13px;
-  text-decoration: none;
+  font-size: 15px;
 }
 .delete-confirmation form .cancel-link,
 .delete-confirmation input[type="submit"] {
@@ -610,11 +587,11 @@ div#toolbar form input[type="submit"] {
 div#toolbar #searchbar {
   padding: 15px 0.8em;
   margin: 0 4px 0 7px;
-  font-size: 13px;
+  font-size: 15px;
 }
 div#changelist .actions label,
 div#changelist .actions span {
-  font-size: 12px !important;
+  font-size: 14px !important;
   line-height: 26px;
 }
 div#changelist .actions select {
@@ -638,7 +615,7 @@ div#toolbar form input[type="submit"]:hover {
 .object-tools a:visited,
 .object-tools button {
   padding: 0.4rem 0.8rem;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 20px;
   text-transform: uppercase;
 }
@@ -716,8 +693,7 @@ input[type="button"]:hover,
   outline: 0 none;
 }
 #main .submit-row input {
-  font-size: 13px;
-  background-color: #ee8e21 !important;
+  font-size: 14px;
 }
 .inline-quick-link-container {
   text-align: center;
@@ -753,8 +729,8 @@ input[type="button"]:hover,
 }
 .menu-toggle {
   position: fixed;
-  left: 16.75rem;
-  width: 1.1rem;
+  left: 18.75rem;
+  width: 1.4rem;
   border: 0;
   height: 100px;
   cursor: pointer;
@@ -782,7 +758,7 @@ input[type="button"]:hover,
 .menu-toggle:hover {
   opacity: 1;
   right: -1.65rem;
-  width: 1.45rem;
+  width: 1.65rem;
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -797,13 +773,13 @@ input[type="button"]:hover,
 }
 .account-button:hover,
 .account-button:focus {
-  color: #e2802b;
+  color: #df5d43;
 }
 .account-button:hover span,
 .account-button:focus span,
 .account-menu .dropdown-clickable:hover span,
 .account-menu .dropdown-clickable:focus span {
-  background: #e2802b;
+  background: #df5d43;
 }
 .account-menu {
   position: absolute;
@@ -875,7 +851,7 @@ input[type="button"]:hover,
 #header .account-menu .dropdown-clickable:hover,
 #header .account-menu .dropdown-clickable:active,
 #header .account-menu .dropdown-clickable:focus {
-  color: #e2802b;
+  color: #df5d43;
 }
 #main-content #header {
   height: 0;
@@ -933,7 +909,7 @@ input[type="button"]:hover,
 }
 #changelist p.paginator a,
 #changelist p.paginator .this-page {
-  background: #e2802b;
+  background: #df5d43;
   padding: 5px 10px;
   margin-right: 5px;
   border-radius: 2px;
@@ -949,7 +925,7 @@ input[type="button"]:hover,
 }
 #changelist p.paginator a.showall {
   background: none;
-  color: #e2802b;
+  color: #df5d43;
 }
 #changelist p.paginator a.showall:focus,
 #changelist p.paginator a.showall:hover {
@@ -984,7 +960,7 @@ div#toolbar #searchbar {
 #main .option-container .option:hover,
 #main .option-container .option:focus,
 #main .option-container .option:active {
-  background: #e2802b;
+  background: #df5d43;
   color: #fff;
   outline: 0 none;
 }
@@ -998,12 +974,12 @@ div.calendar td,
 div.calendar th,
 div.calendar-shortcuts,
 p.calendar-cancel {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
 }
 div.calendar caption,
 div.calendarbox h2 {
-  background: #e2802b;
+  background: #df5d43;
   color: #fff;
 }
 div.calendar caption {
@@ -1036,7 +1012,7 @@ div.calendar td a:hover,
 div.calendar td.selected a,
 ul.timelist a:hover {
   background: #ffe5e5;
-  color: #e2802b;
+  color: #df5d43;
 }
 .calendarbox a.calendarnav-previous {
   mask: url(../../ui/openwisp/images/calender-prev.svg) no-repeat center;
@@ -1068,7 +1044,7 @@ p.calendar-cancel {
   padding: 10px;
 }
 div.calendar-shortcuts a:hover {
-  color: #e2802b;
+  color: #df5d43;
 }
 
 /* RESPONSIVE */
@@ -1180,13 +1156,13 @@ div#container.no-auth,
 }
 #menu {
   position: fixed;
-  background: #4a555f;
+  background: #fcfcfc;
   box-shadow: 0 1px 4px -1px #00000026;
   top: 0;
   left: 0;
 }
 .menu-bar {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 }
 a.menu-item,
 .mg-link,
@@ -1196,16 +1172,16 @@ a.menu-item,
   word-break: break-word;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 0.76rem;
+  font-size: 0.86rem;
   font-weight: 500;
   align-items: center;
-  color: #fff;
+  color: #777;
   text-decoration: none !important;
 }
 .menu-item .icon,
 .mg-heading .icon,
 .mg-link .icon {
-  background: #fff;
+  background: #777;
   width: 1.375rem;
   height: 1.375rem;
   flex-shrink: 0;
@@ -1226,8 +1202,8 @@ a.menu-item,
 #menu .mg-link:focus,
 .select2-results__option--highlighted[aria-selected],
 .select2-results__option[aria-selected="true"] {
-  background: none !important;
-  color: #e2802b !important;
+  background: #ffe5e5 !important;
+  color: #df5d43 !important;
 }
 #menu .mg-link:hover,
 #menu .mg-link:focus {
@@ -1238,10 +1214,10 @@ a.menu-item,
 }
 #menu .mg-link {
   font-weight: 300;
-  font-size: 0.8rem;
-  padding: 0.45rem 2rem;
+  font-size: 0.9rem;
+  padding: 0.55rem 1rem;
   text-transform: capitalize;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.675);
 }
 .menu-item:hover .icon,
 .mg-head:hover .icon,
@@ -1256,7 +1232,7 @@ a.menu-item,
 .mg-link:hover .icon,
 .mg-link:focus .icon,
 #menu a.active .icon {
-  background: #e2802b;
+  background: #df5d43;
 }
 .mg-arrow {
   flex-shrink: 0;
@@ -1276,7 +1252,7 @@ a.menu-item,
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  background: none;
+  background: #fdf2f2;
 }
 .mg-list li {
   padding: 0;
@@ -1304,7 +1280,7 @@ a.menu-item,
   transform: rotate(-90deg);
 }
 .menu-group.active .mg-head {
-  color: #e2802b;
+  color: #df5d43;
 }
 .mg-heading,
 .mg-list span,
@@ -1312,7 +1288,7 @@ a.menu-item,
   pointer-events: none;
 }
 .menu-group.active {
-  background: none;
+  background: #fdf2f2f2;
 }
 h1#site-name {
   margin: 0;
@@ -1323,7 +1299,7 @@ h1#site-name {
   width: 165px;
   height: 95px;
   margin: auto;
-  background: url(../../../static/ui/openwisp/images/Nexapp.png)
+  background: url(../../../static/ui/openwisp/images/openwisp-logo-black.svg)
     no-repeat scroll 0 50%/100%;
   text-indent: -2000px;
 }
@@ -1339,15 +1315,15 @@ h1#site-name {
 
 /* Highlight menu item */
 #menu a.active {
-  background: none !important;
-  color: #e2802b !important;
+  background: #ffe5e5 !important;
+  color: #df5d43 !important;
   cursor: default;
 }
 .menu-group.active-mg:not(.active) .mg-head {
-  background: none !important;
+  background: #ffe5e5 !important;
 }
 #menu a.active:hover {
-  background: none !important;
+  background: #ffe5e5 !important;
 }
 
 /****************** MENU(screen-size > 768px) ******************/
@@ -1382,7 +1358,7 @@ h1#site-name {
   }
 
   #menu {
-    width: 16.75rem;
+    width: 18.75rem;
     height: 100vh;
     z-index: 9999;
     overflow: visible;
@@ -1401,7 +1377,7 @@ h1#site-name {
   a.menu-item,
   .mg-link,
   .mg-head {
-    width: 240px;
+    width: 268px;
   }
 
   /*** MENU CLOSE ***/
@@ -1495,7 +1471,7 @@ h1#site-name {
 
   /*** MENU OPEN ***/
   #main-content {
-    margin-left: 16.75rem;
+    margin-left: 18.75rem;
   }
 
   /*** MENU CLOSE ***/
@@ -1535,7 +1511,7 @@ h1#site-name {
   #site-name a {
     width: 2.5rem;
     height: 2.5rem;
-    background: url(../../../static/ui/openwisp/images/favicon.png)
+    background: url(../../../static/ui/openwisp/images/openwisp-logo-small.svg)
       no-repeat center;
   }
   .hamburger {
@@ -1583,54 +1559,12 @@ h1#site-name {
   box-shadow: none;
 }
 body.login {
-/* background: #464646 !important; */
-background-image: url(../../../static/ui/openwisp/images/login-page-lines.png);
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-background-color: #f5f8fa;
-display: flex;
-
-flex-direction: row;
-min-height: 100%;
-flex-wrap: nowrap;
-justify-content: space-around;
-align-items: center;
-}
-
-#login_h2 {
-color: rgb(239, 139, 30);
-text-align: center;
-font-size: 1rem !important;
-font-weight: 500;
-}
- 
-#login_copyright {
-position: absolute;
-z-index: 10;
-left: 60px;
-bottom: 20px;
-}
- 
-#login_copyright p {
-color: rgb(74, 85, 95);
-font-size: 0.8rem;
+  background: #f4f7f6;
 }
 .login #container {
-margin: 0px !important;
-min-width: 375px;
-height: 502px;
-max-width: 450px;
+  box-shadow: 0px 0px 6px #f4f7f6;
+  width: 31em !important;
 }
-#login_img {
-margin: 20px;
-height: 335px;
- 
-display: flex;
-width: 100%;
-display: block;
-}
-
 .hide {
   display: none;
 }
@@ -1646,7 +1580,7 @@ display: block;
   display: block;
 }
 .login #site-name a {
-  background: url(../../../static/ui/openwisp/images/Nexapp-Logo.png)
+  background: url(../../../static/ui/openwisp/images/openwisp-logo-black.svg)
     no-repeat scroll 0 50%/100%;
   text-indent: -2000px;
   width: 150px;
@@ -1695,8 +1629,8 @@ body::-webkit-scrollbar {
   -webkit-mask-image: url(../../ui/openwisp/images/user.svg);
 }
 .ow-dashboard-icon {
-  mask-image: url(../../ui/openwisp/images/home.png);
-  -webkit-mask-image: url(../../ui/openwisp/images/home.png);
+  mask-image: url(../../ui/openwisp/images/dashboard.svg);
+  -webkit-mask-image: url(../../ui/openwisp/images/dashboard.svg);
 }
 .ow-info-icon {
   mask-image: url(../../ui/openwisp/images/info.svg);
@@ -1734,8 +1668,8 @@ body::-webkit-scrollbar {
   -webkit-mask-image: url(../../ui/openwisp/images/org-owner.svg);
 }
 .ow-user-and-org {
-  mask-image: url(../../ui/openwisp/images/organisation.png);
-  -webkit-mask-image: url(../../ui/openwisp/images/organisation.png);
+  mask-image: url(../../ui/openwisp/images/user-and-org.svg);
+  -webkit-mask-image: url(../../ui/openwisp/images/user-and-org.svg);
 }
 .ow-permission {
   mask-image: url(../../ui/openwisp/images/permission.svg);
@@ -1745,12 +1679,12 @@ body::-webkit-scrollbar {
 /* CONTROLLER ICONS */
 
 .ow-config {
-  mask-image: url(../../ui/openwisp/images/configuration.png);
-  -webkit-mask-image: url(../../ui/openwisp/images/configuration.png);
+  mask-image: url(../../ui/openwisp/images/config.svg);
+  -webkit-mask-image: url(../../ui/openwisp/images/config.svg);
 }
 .ow-device {
-  mask-image: url(../../ui/openwisp/images/devices.png);
-  -webkit-mask-image: url(../../ui/openwisp/images/devices.png);
+  mask-image: url(../../ui/openwisp/images/device.svg);
+  -webkit-mask-image: url(../../ui/openwisp/images/device.svg);
 }
 .ow-device-group {
   mask-image: url(../../ui/openwisp/images/device-group.svg);
@@ -1765,8 +1699,8 @@ body::-webkit-scrollbar {
   -webkit-mask-image: url(../../ui/openwisp/images/vpn.svg);
 }
 .ow-geo {
-  mask-image: url(../../ui/openwisp/images/geographical.png);
-  -webkit-mask-image: url(../../ui/openwisp/images/geographical.png);
+  mask-image: url(../../ui/openwisp/images/geo-info.svg);
+  -webkit-mask-image: url(../../ui/openwisp/images/geo-info.svg);
 }
 .ow-location {
   mask-image: url(../../ui/openwisp/images/location.svg);
@@ -1865,48 +1799,6 @@ body::-webkit-scrollbar {
   mask-image: url(../../ui/openwisp/images/monitoring-wifi.svg);
   -webkit-mask-image: url(../../ui/openwisp/images/monitoring-wifi.svg);
 }
-
-/* TUNNEL */
-.ow-pathlabel-icon {
--webkit-mask-image: url(../../ui/openwisp/images/ethernet.png) !important;
-}
-.ow-pathsecurity-icon {
--webkit-mask-image: url(../../ui/openwisp/images/privacypolicy.png) !important;
-}
-.ow-job-icon {
--webkit-mask-image: url(../../ui/openwisp/images/task.png) !important;
-}
-.ow-site-to-site-icon {
--webkit-mask-image: url(../../ui/openwisp/images/load-balancer.png) !important;
-}
-.ow-tunnel-icon {
--webkit-mask-image: url(../../ui/openwisp/images/vpn.png) !important;
-}
-.ow-hub-icon {
--webkit-mask-image: url(../../ui/openwisp/images/technology.png) !important;
-}
-.ow-spoke-icon {
--webkit-mask-image: url(../../ui/openwisp/images/spoke.png) !important;
-}
-.ow-datamonitoring-icon {
--webkit-mask-image: url(../../ui/openwisp/images/datamonitoring.png) !important;
-}
-.ow-linkmonitoring-icon {
-  -webkit-mask-image: url(../../ui/openwisp/images/link.png) !important;
-}
-
-/* TRAFFIC */
-.ow-sdwanfirewall-icon {
-  -webkit-mask-image: url(../../ui/openwisp/images/firewall.png) !important;
-}
-
-.ow-trafficapplication-icon {
-  -webkit-mask-image: url(../../ui/openwisp/images/web-traffic.png) !important;
-}
-.ow-trafficapp-icon {
-  -webkit-mask-image: url(../../ui/openwisp/images/categorization.png) !important;
-}
-
 
 /* FIRMWARE */
 
