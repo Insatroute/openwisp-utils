@@ -1,5 +1,6 @@
 /* Django 4.2.0 stopped shipping fonts.
 See https://code.djangoproject.com/ticket/33878 */
+/*Testing changes*/
 
 @font-face {
   font-family: "Roboto";
@@ -603,7 +604,7 @@ div#toolbar {
 div#toolbar form input[type="submit"] {
   margin: 0 10px 0 3px;
   padding: 0.47rem 1rem;
-  background: #333;
+  background: #24415d;
   border: 0 none;
   color: #fff;
 }
@@ -624,7 +625,7 @@ div#changelist .actions select {
 div#changelist .actions .button {
   padding: 7px 1rem;
   border: 0 none;
-  background: #333;
+  background: #24415d;
   color: #fff;
   height: unset;
 }
@@ -1192,7 +1193,7 @@ a.menu-item,
 .mg-link,
 .mg-head {
   display: flex;
-  padding: 0.875rem 1rem;
+  padding: 0.6rem 1rem;
   word-break: break-word;
   cursor: pointer;
   text-transform: uppercase;
@@ -1646,7 +1647,7 @@ display: block;
   display: block;
 }
 .login #site-name a {
-  background: url(../../../static/ui/openwisp/images/Nexapp-Logo.png)
+  background: url(../../../static/ui/openwisp/images/Nexapp-Logo-w.png)
     no-repeat scroll 0 50%/100%;
   text-indent: -2000px;
   width: 150px;
