@@ -6,6 +6,7 @@
 #ow-changelist-filter {
   padding: 1.25rem 2.5rem;
   background: #fff;
+  font-family: 'Roboto', sans-serif !important;
   border-bottom: 2px solid #f6f6f6;
   display: flex;
   flex-direction: column-reverse;
