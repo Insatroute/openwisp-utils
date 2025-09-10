@@ -1950,6 +1950,14 @@ body::-webkit-scrollbar {
   -webkit-mask-image: url(../../ui/openwisp/images/node.svg);
 }
 
+.flex-container #id_mode, #id_vpn_type, #id_dpdaction, #id_ike_version, 
+#id_ike_encryption_algorithm, #id_ike_integrity_algorithm, #id_ike_dh_group, 
+#id_ike_lifetime, #id_esp_encryption_algorithm, #id_esp_integrity_algorithm, 
+#id_esp_dh_group, #id_esp_lifetime, #id_pfs, #id_remote_id_type, #id_ike_diffie_hellman_group, 
+#id_esp_version, #id_esp_diffie_hellman_group {
+  width: 300px;
+}
+
 /* LOGIN SCREEN */
 @media only screen and (max-width: 576px) {
   .login #container {
