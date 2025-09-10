@@ -139,10 +139,10 @@ div#main-content table tbody th,
 div#main-content table tbody td {
   padding: 1rem 10px;
   vertical-align: middle;
-  font-size: 13px;
+  font-size: 12px;
 }
 #main-content .breadcrumbs {
-  font-size: 13px;
+  font-size: 12px;
 }
 /* Standard links (no need to stand out) */
 table thead th.sorted .sortoptions a.sortremove:focus:after,
@@ -599,7 +599,7 @@ a.button,
   line-height: inherit !important;
 }
 div#toolbar {
-  padding: 0.8rem 1.2rem;
+  padding: 0.4rem 1.2rem;
 }
 div#toolbar form input[type="submit"] {
   margin: 0 10px 0 3px;
@@ -734,6 +734,9 @@ input[type="button"]:hover,
 /* MENU TOGGLE BUTTONS */
 .login h1#site-name {
   padding: 1.2rem 0;
+}
+.login .menu-bar {
+  background-color: #fff;
 }
 .hamburger {
   display: flex;
@@ -1187,7 +1190,7 @@ div#container.no-auth,
   left: 0;
 }
 .menu-bar {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 }
 a.menu-item,
 .mg-link,
@@ -1647,7 +1650,7 @@ display: block;
   display: block;
 }
 .login #site-name a {
-  background: url(../../../static/ui/openwisp/images/Nexapp-Logo-w.png)
+  background: url(../../../static/ui/openwisp/images/Nexapp-Logo.png)
     no-repeat scroll 0 50%/100%;
   text-indent: -2000px;
   width: 150px;

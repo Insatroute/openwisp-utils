@@ -35,7 +35,7 @@
       title: {
         yanchor: "center",
         y: 0.92,
-        font: { size: 20 },
+        font: { size: 13 },
       },
     },
     options = {
