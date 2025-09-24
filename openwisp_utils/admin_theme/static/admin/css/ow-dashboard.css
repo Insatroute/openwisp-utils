@@ -6,12 +6,13 @@
   gap: 20px;
   padding: 10px 40px 10px 40px;
   margin: 0 auto;
-  /* max-width: 1800px; */
+  max-width: 1800px;
   /* box-sizing: border-box; */
 }
 
 /* Each chart card */
 .js-plotly-plot {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -67,6 +68,9 @@
   margin-left: 2%;
   margin-right: 0;
 }
+.ow-chart-contents .js-plotly-plot{
+  display: block !important;
+} 
 
 /* Responsive */
 @media (max-width: 768px) {
