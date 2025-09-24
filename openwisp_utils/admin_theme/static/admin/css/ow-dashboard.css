@@ -12,7 +12,6 @@
 
 /* Each chart card */
 .js-plotly-plot {
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
