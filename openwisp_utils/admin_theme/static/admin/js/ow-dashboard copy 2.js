@@ -20,26 +20,22 @@
 
   const layout = {
       height: 300,
-      width: 330,
+      width: 340,
       margin: {
         t: 0,
         b: 0,
-        // r: 0,
-        // l: 0,
       },
       legend: {
-        // orientation: "v",
         yanchor: "center",
-        xanchor: "left",
+        xanchor: "right",
         x: 0,
         y: 0,
         bgcolor: "transparent",
-        traceorder: "normal",
       },
       title: {
         yanchor: "center",
         y: 0.92,
-        font: { size: 15, weight: "bold", family: "poppins" },
+        font: { size: 13 },
       },
     },
     options = {
@@ -54,7 +50,7 @@
     delete layout.annotations;
     let data = {
         type: "pie",
-        hole: 0.7,
+        hole: 0.6,
         showlegend: !elementsParam[i].hasOwnProperty("quick_link"),
       },
       element = document.createElement("div"),
@@ -96,15 +92,14 @@
         totalValues += data.values[c];
       }
     }
-    let formattedTitle = layout.title.text.split(" ").join("<br>");
     layout.annotations = [
       {
         font: {
-          size: 13,
+          size: 20,
           weight: "bold",
         },
         showarrow: false,
-        text: `<b>${totalValues}</b><br>${formattedTitle}`,
+        text: `<b>${totalValues}</b>`,
         x: 0.5,
         y: 0.5,
       },

@@ -1,30 +1,61 @@
+/* Main chart container */
 #plot-container {
-  padding: 0.625rem 2.5rem;
-  text-align: center;
-  overflow-x: hidden;
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px 40px 10px 40px;
+  margin: 0 auto;
+  /* max-width: 1800px; */
+  /* box-sizing: border-box; */
 }
+
+/* Each chart card */
 .js-plotly-plot {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  /* padding: 1rem; */
+  /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
 }
+
 .js-plotly-plot .surface {
   cursor: pointer;
 }
+
+/* Legend + tooltips */
 .js-plotly-plot .legendtext,
 .js-plotly-plot .hoverlayer {
   text-transform: capitalize;
+  font-size: 13px;
 }
-.js-plotly-plot .quick-link-container {
-  position: absolute;
-  margin-top: -30px;
-  width: 460px;
+
+/* Quick link button */
+.quick-link-container {
+  margin-top: 12px;
+  text-align: center;
+  width: 100%;
 }
-.quick-link.button.negative-top-20 {
-  position: relative;
-  top: -20px;
+
+.quick-link.button {
+  background: #2563eb;
+  color: #fff !important;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
-.quick-link-container .button.quick-link {
-  padding: 0.3rem 1rem;
+
+.quick-link.button:hover {
+  background: #1e40af;
 }
+
 .dashboard:not([class*="app-"]) #container #content {
   margin: 0 auto;
   width: auto;
@@ -38,18 +69,12 @@
   margin-right: 0;
 }
 
-@media (max-width: 767px) {
-  .dashboard:not([class*="app-"]) #container #content-main,
-  .dashboard:not([class*="app-"]) #container #content-related {
-    width: 100% !important;
-    margin-left: 0;
-  }
-}
-
-@media only screen and (max-width: 576px) {
+/* Responsive */
+@media (max-width: 768px) {
   #plot-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    grid-template-columns: 1fr; /* stack cards on small screens */
+  }
+  .quick-link.button {
+    width: 100%;
   }
 }
