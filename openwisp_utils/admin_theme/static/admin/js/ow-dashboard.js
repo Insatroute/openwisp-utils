@@ -20,7 +20,7 @@
 
   const layout = {
       height: 300,
-      width: 330,
+      width: 300,
       margin: {
         t: 0,
         b: 0,

@@ -1,12 +1,13 @@
 /* Main chart container */
 #plot-container {
+  /* width: 98%; */
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
   gap: 20px;
   padding: 10px 40px 10px 40px;
   margin: 0 auto;
-  max-width: 1800px;
+  /* max-width: 1800px; */
   /* box-sizing: border-box; */
 }
 
@@ -64,7 +65,7 @@
   width: 63%;
 }
 .dashboard:not([class*="app-"]) #container #content-related {
-  width: 35%;
+  width: 100%;
   margin-left: 2%;
   margin-right: 0;
 }
