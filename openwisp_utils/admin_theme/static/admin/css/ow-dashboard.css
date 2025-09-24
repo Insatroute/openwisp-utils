@@ -68,7 +68,7 @@
   margin-left: 2%;
   margin-right: 0;
 }
-.ow-chart-contents .js-plotly-plot{
+#ow-chart-contents .js-plotly-plot{
   display: block !important;
 } 
 
