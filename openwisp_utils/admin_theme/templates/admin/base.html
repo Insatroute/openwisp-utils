@@ -135,13 +135,9 @@
     </div>
     <!-- END Container -->
 </body>
-<script>
-  window.ENV = "{{ ENV }}";
-  window.API_DOMAIN = "{{ API_DOMAIN }}";
-  window.API_IP = "{{ API_IP }}";
-
-  // Single variable logic: prefer domain, fallback to IP if needed
-  window.API_BASE_URL = window.API_DOMAIN || window.API_IP;
+<script>    
+    window.ENV = "{{ ENV }}";
+    window.API_BASE_URL = "{{ API_BASE_URL }}";
 </script>
 
 
