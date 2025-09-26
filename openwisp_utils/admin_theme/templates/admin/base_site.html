@@ -131,6 +131,7 @@
       </li>
     </ul>
   </div>
+  {% if request.resolver_match.url_name == 'index' and request.resolver_match.app_name == 'admin' %}
 <div class="account action">
   <!-- Recent Actions Button -->
   <div title="Recent Actions" id="recent-actions-btn" role="button" tabindex="0"
@@ -148,7 +149,8 @@
     </li>
   </ul>
 </div>
-  
+{% endif %}
+
 {% endblock  %}
 {% block menu %}{% include "./menu.html" %}{% endblock %}
 
