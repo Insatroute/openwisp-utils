@@ -4,6 +4,85 @@
 {% block title %}{{ title }} | {{ site_title }}{% endblock %}
 
 {% block extrastyle %}
+<style>
+/* Recent Actions dropdown overrides */
+
+#recent-actions-dropdown li{
+  display: flex;
+}
+#recent-actions-dropdown li a{
+  color: black !important;
+  margin-left: 22px;
+  margin-top: -5px;
+}
+.action span{
+  background:none !important;
+}
+.action .account-menu span{
+  margin-left: 10px;
+  width: 6.5rem;
+}
+
+
+#recent-actions-btn{
+  margin-left: 13px;
+}
+#recent-actions-dropdown {
+  width: 350px !important;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  padding: 10px;
+}
+
+#recent-actions-dropdown .module {
+  border: none;
+  box-shadow: none;
+  background: none;
+  padding: 0px 5px;
+  margin: 0;
+}
+
+#recent-actions-dropdown .module h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+#recent-actions-dropdown .actionlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#recent-actions-dropdown .actionlist li {
+  padding: 4px 0;
+  border-bottom: 1px solid #f3f3f3;
+  font-size: 13px;
+}
+
+#recent-actions-dropdown .actionlist li:last-child {
+  border-bottom: none;
+}
+.account-menu {
+    position: absolute;
+    opacity: 1;
+    transition: all 0.3s ease;
+    width: 200px;
+    top: 2.5rem;
+    right: 0;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0px 1px 0.188rem #00000040;
+    z-index: 10;
+    padding: 0.45rem 0.625rem;
+}
+
+</style>
 {{ block.super }}
 {% if OPENWISP_ADMIN_THEME_LINKS %}
   {% for link in OPENWISP_ADMIN_THEME_LINKS %}
@@ -52,6 +131,24 @@
       </li>
     </ul>
   </div>
+<div class="account action">
+  <!-- Recent Actions Button -->
+  <div title="Recent Actions" id="recent-actions-btn" role="button" tabindex="0"
+       aria-expanded="false" aria-controls="recent-actions-dropdown"
+       class="account-button toggle-btn tooltip-sm">
+    <strong>Recent Actions</strong>
+  </div>
+
+  <!-- Recent Actions Dropdown -->
+  <ul id="recent-actions-dropdown" role="list" aria-labelledby="recent-actions-btn"
+      class="account-menu hide">
+    <li>
+      {% block sidebar %}
+      {% endblock %}
+    </li>
+  </ul>
+</div>
+  
 {% endblock  %}
 {% block menu %}{% include "./menu.html" %}{% endblock %}
 
@@ -69,6 +166,30 @@
 {% endcomment %}
 {% if user.is_authenticated and user.is_staff %}
     <script src="{% static "admin/js/menu.js" %}"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("recent-actions-btn");
+    const dropdown = document.getElementById("recent-actions-dropdown");
+
+    if (!btn || !dropdown) return;
+
+    // Hide initially
+    dropdown.classList.add("hide");
+
+    btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle("hide");
+    });
+
+    // Hide when clicking outside
+    document.addEventListener("click", function (e) {
+        if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.add("hide");
+        }
+    });
+});
+</script>
 {% endif %}
 {% if OPENWISP_ADMIN_THEME_JS %}
     {% for js in OPENWISP_ADMIN_THEME_JS %}
