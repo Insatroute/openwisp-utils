@@ -116,12 +116,20 @@
                     <div id="content" class="{% block coltype %}colM{% endblock %}">
                         <div class="title-wrapper">
                             {% block pretitle %}{% endblock %}
-                            {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
-                            {% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %}
+                            {% comment %} {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %} {% endcomment %}
+                            {% comment %} {% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %} {% endcomment %}
+                            {% if request.path != '/admin/' %}
+                                {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+                                {% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %}
+                            {% endif %}
                             {% block object-tools %}{% endblock %}
                         </div>
-                        {% block content %}{% endblock %}
-                        {% block sidebar %}{% endblock %}
+
+                        {% if request.path != '/admin/' %}
+                            {% block content %}{% endblock %}
+                        {% endif %}
+                        {% comment %} {% block content %}{% endblock %} {% endcomment %}
+                        {% comment %} {% block sidebar %}{% endblock %} {% endcomment %}
                         <br class="clear">
                     </div>
                     <!-- END Content -->
