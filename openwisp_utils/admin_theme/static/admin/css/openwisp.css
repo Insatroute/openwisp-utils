@@ -1758,6 +1758,11 @@ body::-webkit-scrollbar {
   mask-image: url(../../ui/openwisp/images/devices.png);
   -webkit-mask-image: url(../../ui/openwisp/images/devices.png);
 }
+
+.ow-access {
+  mask-image: url(../../ui/openwisp/images/access.png);
+  -webkit-mask-image: url(../../ui/openwisp/images/access.png);
+}
 .ow-device-group {
   mask-image: url(../../ui/openwisp/images/device-group.svg);
   -webkit-mask-image: url(../../ui/openwisp/images/device-group.svg);
