@@ -7,6 +7,91 @@
 {% for css in dashboard_css %}
 <link rel="stylesheet" type="text/css" href="{% static css %}" />
 {% endfor %}
+
+<style>
+  /* row right under the built-in dashboard tiles */
+  #custom-distribution-row {
+    max-width: 1200px;
+    margin: 0 auto 0;
+    padding: 10px 40px 10px 40px;
+  }
+  .custom-distribution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 22px;
+  }
+  @media (max-width: 1100px) { .custom-distribution-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 720px)  { .custom-distribution-grid { grid-template-columns: 1fr; } }
+
+  /* card shell to match built-in widgets */
+  .ow-mini-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    padding: 14px;
+    max-width: 350px;
+    height: 280px;
+  }
+  .ow-mini-title {
+    text-align: center;
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    font-weight: 480;
+    color: #2b2f36;
+  }
+
+  /* inner light panel (donut area) */
+  .ow-mini-inner {
+    margin-top: 30px;
+    background: #fbfbfb;
+    border-radius: 12px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Plotly target fills the inner panel */
+  .ow-mini-plot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Legend area (like OpenWISP tiles) */
+  .ow-mini-legend {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 6px 2px 6px;
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    color: #374151;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity .15s ease, color .15s ease;
+  }
+  .legend-item.is-off {
+    opacity: .45;
+    text-decoration: line-through;
+  }
+  .legend-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+    background: #353c44;
+    flex: 0 0 auto;
+  }
+</style>
 {% endblock %}
 
 {% block extrahead %}
@@ -26,7 +111,40 @@
   {% include template %}
 {% endfor %}
 
+<!-- built-in OpenWISP charts -->
 <div id="plot-container"></div>
+
+<!-- ===== your three matching cards ===== -->
+<div id="custom-distribution-row">
+  <div class="custom-distribution-grid">
+
+    <div class="ow-mini-card Carrier-Distribution-div">
+      <h4 class="ow-mini-title Carrier-Distribution-span">Carrier Distribution</h4>
+      <div class="ow-mini-inner">
+        <div id="Carrier-Distribution-chart" class="ow-mini-plot"></div>
+      </div>
+      <div class="ow-mini-legend" id="Carrier-Distribution-legend"></div>
+    </div>
+
+    <div class="ow-mini-card Network-Distribution-div">
+      <h4 class="ow-mini-title Network-Distribution-span">Network Distribution</h4>
+      <div class="ow-mini-inner">
+        <div id="Network-Distribution-chart" class="ow-mini-plot"></div>
+      </div>
+      <div class="ow-mini-legend" id="Network-Distribution-legend"></div>
+    </div>
+
+    <div class="ow-mini-card Interface-Distribution-div">
+      <h4 class="ow-mini-title Interface-Distribution-span">Interface Distribution</h4>
+      <div class="ow-mini-inner">
+        <div id="Interface-Distribution-chart" class="ow-mini-plot"></div>
+      </div>
+      <div class="ow-mini-legend" id="Interface-Distribution-legend"></div>
+    </div>
+
+  </div>
+</div>
+<!-- =============================================== -->
 
 {% for template in dashboard_templates_after_charts %}
   {% include template %}
@@ -45,10 +163,256 @@
 <script>
   const owDashboardCharts = {{ dashboard_charts | safe }};
 </script>
+
+<!-- cartesian bundle used by core dashboard -->
 <script src="{% static "admin/vendor/js/plotly-cartesian.min.js" %}"></script>
+<!-- add full bundle so 'pie' works -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 <script src="{% static "admin/js/ow-dashboard.js" %}"></script>
 {% for js in dashboard_js %}
 <script src="{% static js %}"></script>
 {% endfor %}
+
+<script>
+/* ---------- Donut with clickable legend to hide/show slices ---------- */
+function renderDonutWithLegend(opts) {
+  const { elId, legendId, labels, values, colors } = opts;
+
+  const el = document.getElementById(elId);
+  const legendRoot = document.getElementById(legendId);
+  if (!el || !legendRoot) return;
+
+  const baseValues = values.slice();                // keep originals
+  const active = baseValues.map(v => v > 0);        // visibility mask
+
+  function totalActive() {
+    return baseValues.reduce((acc, v, i) => acc + (active[i] ? v : 0), 0);
+  }
+
+  // initial plot
+  const rect = el.getBoundingClientRect();
+  const data = [{
+    type: 'pie',
+    labels: labels,
+    values: baseValues,             // start with all on
+    hole: 0.69,
+    sort: false,
+    direction: 'clockwise',
+    textinfo: 'none',
+    hoverinfo: 'label+value+percent',
+    marker: { colors: colors || [] }
+  }];
+  const layout = {
+    height: Math.max(140, Math.floor(rect.height)),
+    width:  rect.width,
+    margin: { l: 6, r: 6, t: 6, b: 6 },
+    showlegend: false,
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    annotations: [{
+      showarrow: false,
+      text: String(totalActive() || 0),
+      x: 0.5, y: 0.5,
+      font: { size: 13, color: '#2b2f36' }
+    }]
+  };
+  Plotly.newPlot(el, data, layout, { responsive: true, displayModeBar: false });
+
+  // build legend
+  legendRoot.innerHTML = '';
+  labels.forEach((label, i) => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.dataset.index = i;
+    const sw = document.createElement('span');
+    sw.className = 'legend-swatch';
+    sw.style.background = (colors && colors[i]) ? colors[i] : '#353c44';
+    const txt = document.createElement('span');
+    txt.textContent = label;
+    item.appendChild(sw);
+    item.appendChild(txt);
+    legendRoot.appendChild(item);
+  });
+
+  // legend click -> toggle slice
+  legendRoot.addEventListener('click', (e) => {
+    const node = e.target.closest('.legend-item');
+    if (!node) return;
+    const idx = parseInt(node.dataset.index, 10);
+    active[idx] = !active[idx];                         // toggle
+
+    // update values: turn off slice -> set value 0
+    const newVals = baseValues.map((v, i) => active[i] ? v : 0);
+    Plotly.restyle(el, { values: [newVals] });
+
+    // update center total
+    Plotly.relayout(el, { 'annotations[0].text': String(totalActive() || 0) });
+
+    // update legend look
+    node.classList.toggle('is-off', !active[idx]);
+  });
+
+  // keep snug on resize
+  const ro = new ResizeObserver(() => {
+    const r = el.getBoundingClientRect();
+    Plotly.relayout(el, { width: r.width, height: Math.max(140, Math.floor(r.height)) });
+  });
+  ro.observe(el);
+}
+
+/* ================== DYNAMIC DATA FROM YOUR API ================== */
+
+/* helpers used by buildAuthFetchOptions */
+function sameOrigin(url) {
+  try { return new URL(url, location.href).origin === location.origin; }
+  catch(e) { return false; }
+}
+function getCookie(name) {
+  const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+  return m ? m.pop() : '';
+}
+
+/* your function as provided */
+function buildAuthFetchOptions(url) {
+  const headers = { 'Accept': 'application/json' };
+  const opts = { method: 'GET', headers, credentials: window.API_TOKEN ? 'omit' : 'include', mode: 'cors' };
+  if (window.API_TOKEN) headers['Authorization'] = `Bearer ${window.API_TOKEN}`;
+  if (sameOrigin(url)) {
+    const csrftoken = getCookie('csrftoken') || getCookie('csrf');
+    if (csrftoken) headers['X-CSRFToken'] = csrftoken;
+  }
+  return opts;
+}
+
+/* sample fallback payload (used if fetch fails) */
+const APIResponse = {
+  "interfaces": [
+    {
+      "mobile": {
+        "operator_name": "Airtel",
+        "power_status": "on",
+        "operator_code": "40587",
+        "model": "EC25-AFW",
+        "signal": { "lte": { "rsrq": -10, "rsrp": -97, "snr": 22, "csq": 31, "rssi": -51 } },
+        "manufacturer": "Quectel",
+        "imei": "356789012345678",
+        "connection_status": "connected"
+      },
+      "type": "mobile",
+      "name": "modem1",
+      "up": true
+    },
+    {
+      "mobile": {
+        "operator_name": "Jio",
+        "power_status": "on",
+        "operator_code": "40584",
+        "model": "EM9191",
+        "signal": { "5g": { "snr": 18, "csq": 31, "rsrq": -12, "rsrp": -103 } },
+        "manufacturer": "Sierra",
+        "imei": "862349012345679",
+        "connection_status": "connected"
+      },
+      "type": "mobile",
+      "name": "modem2",
+      "up": true
+    }
+  ]
+};
+
+/* fetch + aggregate → labels/values for the two charts */
+async function getDynamicDistributions() {
+  // device UUID from URL; fallback so the code runs even outside device page
+  const match = location.pathname.match(/[0-9a-fA-F-]{36}/);
+  const DEVICE_UUID = match ? match[0] : 'd9d5e0a3-32ba-4152-b56d-5c56f6ca983a';
+  const API_URL = `https://controller.nexapp.co.in/api/v1/monitoring/device/${DEVICE_UUID}/interfaces-summary/`;
+
+  let json;
+  try {
+    const res = await fetch(API_URL, buildAuthFetchOptions(API_URL));
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    json = await res.json();
+  } catch (e) {
+    // fall back to the provided object
+    json = APIResponse;
+  }
+
+  const carriersCount = new Map();  // operator_name counts
+  const techCount = new Map();      // 4G/5G counts
+
+  const interfaces = Array.isArray(json?.interfaces) ? json.interfaces : [];
+  for (const iface of interfaces) {
+    if (iface?.type !== 'mobile' || !iface?.mobile) continue;
+
+    // --- Carrier bucket ---
+    const op = (iface.mobile.operator_name || 'Unknown').trim();
+    carriersCount.set(op, (carriersCount.get(op) || 0) + 1);
+
+    // --- Network tech bucket ---
+    const sig = iface.mobile.signal || {};
+    // key might be "lte" or "5g" (use the *first* present key)
+    const key = Object.keys(sig)[0];
+    if (key) {
+      const label = (key.toLowerCase() === 'lte') ? '4G' : (key.toLowerCase() === '5g' ? '5G' : key.toUpperCase());
+      techCount.set(label, (techCount.get(label) || 0) + 1);
+    }
+  }
+
+  // Build arrays (stable order)
+  const carrierLabels = Array.from(carriersCount.keys());
+  const carrierValues = carrierLabels.map(k => carriersCount.get(k));
+
+  const networkOrder = ['5G', '4G', 'Ethernet', 'Wi-Fi']; // keep nice order if present
+  const networkLabels = Array.from(new Set([...networkOrder, ...techCount.keys()]))
+    .filter(k => techCount.has(k));
+  const networkValues = networkLabels.map(k => techCount.get(k));
+
+  return { carrierLabels, carrierValues, networkLabels, networkValues };
+}
+
+/* ================== INIT (mix dynamic + existing third chart) ================== */
+
+const palette1 = ['#ff7f0e','#1f77b4','#2ca02c','#353c44','#a72d1d','#267126']; // carriers
+const palette2 = ['#2ca02c','#1f77b4','#353c44','#a72d1d','#f59e0b','#22c55e']; // network
+
+(function initDonuts(){
+  async function go(){
+    const { carrierLabels, carrierValues, networkLabels, networkValues } = await getDynamicDistributions();
+
+    // 1) Carrier Distribution (dynamic)
+    renderDonutWithLegend({
+      elId: 'Carrier-Distribution-chart',
+      legendId: 'Carrier-Distribution-legend',
+      labels: carrierLabels.length ? carrierLabels : ['Airtel','Jio'],
+      values: carrierValues.length ? carrierValues : [1,1],
+      colors: palette1
+    });
+
+    // 2) Network Distribution (dynamic; lte -> 4G, 5g -> 5G)
+    renderDonutWithLegend({
+      elId: 'Network-Distribution-chart',
+      legendId: 'Network-Distribution-legend',
+      labels: networkLabels.length ? networkLabels : ['5G','4G'],
+      values: networkValues.length ? networkValues : [1,1],
+      colors: palette2
+    });
+
+    // 3) Interface Distribution (leave as-is / static, or wire later)
+    const interfaceLabels = ['eth0','wlan0','wlan1','usb0'];
+    const interfaceValues = [5,2,1,0];
+    renderDonutWithLegend({
+      elId: 'Interface-Distribution-chart',
+      legendId: 'Interface-Distribution-legend',
+      labels: interfaceLabels,
+      values: interfaceValues,
+      colors: ['#ff7f0e','#1f77b4','#2ca02c','#353c44']
+    });
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') go();
+  else document.addEventListener('DOMContentLoaded', go);
+})();
+</script>
 {% endif %}
 {% endblock footer %}
