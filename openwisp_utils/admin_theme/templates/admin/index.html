@@ -88,9 +88,8 @@
     text-decoration: line-through;
   }
   .legend-swatch {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
+    width: 12px;
+    height: 12px;
     margin-right: 6px;
     background: #353c44;
     flex: 0 0 auto;
@@ -203,6 +202,10 @@ function renderDonutWithLegend(opts) {
     hole: 0.69,
     sort: false,
     direction: 'clockwise',
+    texttemplate: '%{value} (%{percent})',
+    textposition: 'inside',
+    insidetextorientation: 'auto',
+    textfont: { size: 9, color: '#ffffff' },
     textinfo: 'none',
     hoverinfo: 'label+value+percent',
     marker: { colors: colors || [] }
@@ -391,6 +394,7 @@ const palette2 = ['#2ca02c','#1f77b4','#353c44','#a72d1d','#f59e0b','#22c55e']; 
       labels: carrierLabels.length ? carrierLabels : ['Airtel','Jio'],
       values: carrierValues.length ? carrierValues : [1,1],
       colors: palette1,
+       centerLabel: 'Carrier Distribution'
     });
 
     // 2) Network Distribution (dynamic; lte -> 4G, 5g -> 5G)
