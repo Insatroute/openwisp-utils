@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{% static css %}" />
 {% endfor %}
 
-<style>
+<!-- <style>
   /* row right under the built-in dashboard tiles */
   #custom-distribution-row {
     max-width: 1200px;
@@ -94,7 +94,7 @@
     background: #353c44;
     flex: 0 0 auto;
   }
-</style>
+</style> -->
 {% endblock %}
 
 {% block extrahead %}
@@ -115,10 +115,10 @@
 {% endfor %}
 
 <!-- built-in OpenWISP charts -->
-<div id="plot-container"></div>
+<!-- <div id="plot-container"></div> -->
 
 <!-- ===== your three matching cards ===== -->
-<div id="custom-distribution-row">
+<!-- <div id="custom-distribution-row">
   <div class="custom-distribution-grid">
 
     <div class="ow-mini-card Carrier-Distribution-div">
@@ -146,7 +146,7 @@
     </div>
 
   </div>
-</div>
+</div> -->
 <!-- =============================================== -->
 
 {% for template in dashboard_templates_after_charts %}
