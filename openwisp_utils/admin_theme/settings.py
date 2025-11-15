@@ -13,8 +13,7 @@ ADMIN_DASHBOARD_ENABLED = getattr(settings, "OPENWISP_ADMIN_DASHBOARD_ENABLED", 
 OPENWISP_EMAIL_LOGO = getattr(
     settings,
     "OPENWISP_EMAIL_LOGO",
-    "https://raw.githubusercontent.com/openwisp/openwisp-utils/master/openwisp_utils/"
-    "static/openwisp-utils/images/openwisp-logo.png",
+    "static/openwisp-utils/images/Nexapp-Logo.png",
 )
 
 OPENWISP_HTML_EMAIL = getattr(settings, "OPENWISP_HTML_EMAIL", True)
