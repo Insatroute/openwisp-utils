@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   {% block styles %}
   <style type="text/css">
     :root {
@@ -27,6 +28,10 @@
       font-weight: 400;
       color: #777;
       text-align: center;
+    }
+
+    .email-info .alert{
+      margin-bottom:20px !important;
     }
 
     .container {
@@ -84,7 +89,7 @@
 
     .call-to-action {
       text-align: center;
-      margin-top: 2.5rem;
+      margin-top: 2.5rem !important;
     }
 
     .email-title {
@@ -162,6 +167,8 @@
     <div class="box">
       {% block mail_header %}
       <div class="icon-container">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+
         {% comment %} <img src="{{ site_url }}{% static "ui/openwisp/images/email.png" %}" alt="email icon"> {% endcomment %}
       </div>
       <div class="sysname-container">Nexapp Controller</div>
