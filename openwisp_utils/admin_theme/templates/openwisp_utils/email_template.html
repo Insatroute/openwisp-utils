@@ -58,9 +58,8 @@
     .card {
       background: #ffffff;
       border-radius: 18px;
-      box-shadow:
-        0 24px 40px rgba(15, 23, 42, 0.18),
-        0 4px 6px rgba(15, 23, 42, 0.06);
+      /* simplified shadow */
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.18);
       padding: 32px 32px 28px 32px;
     }
 
@@ -148,12 +147,12 @@
       font-size: 15px;
       padding: 10px 32px;
       color: #ffffff !important;
-      background: var(--primary-bg-color);
+      /* use direct color so Outlook / old clients don't ignore it */
+      background: #0f6aa6;
       border: 1px solid #0b4e7a;
       box-sizing: border-box;
-      box-shadow:
-        0 10px 20px rgba(15, 106, 166, 0.25),
-        0 2px 4px rgba(15, 106, 166, 0.3);
+      /* lighter shadow */
+      box-shadow: 0 6px 12px rgba(15, 106, 166, 0.25);
       display: inline-block;
     }
 
@@ -189,7 +188,9 @@
 
     {% block logo %}
     <div class="logo-container">
-      <img src="{{ logo_url }}" alt="Nexapp Logo" class="logo">
+      <img
+        src="{% if logo_url %}{{ logo_url }}{% else %}https://nexapp.co.in/wp-content/uploads/2021/10/Nexapp-Logo-Finalwith-Register-01-1.png{% endif %}"
+        alt="Nexapp Logo" class="logo">
     </div>
     {% endblock logo %}
 
@@ -204,10 +205,6 @@
     <div class="card">
 
       {% block mail_header %}
-      <div class="icon-container">
-        <i class="fa fa-envelope" aria-hidden="true"></i>
-      </div>
-
       <!-- pill with dynamic recipient -->
       <div class="sysname-container">
         User Signup Email Verification —
@@ -215,16 +212,15 @@
       </div>
 
       {% if title %}
-      <div class="email-title">{{ title }}</div>
+      <div class="email-title">Please Confirm Your Email Address</div>
       {% endif %}
 
       {% if subtitle %}
-      <div class="subtitle">{{ subtitle }}</div>
+      <div class="subtitle">Please check your email for a verification link.</div>
       {% endif %}
       {% endblock mail_header %}
 
       {% block mail_body %}
-      <!-- dynamic, can contain HTML -->
       <div class="msg">
         {{ message|safe }}
       </div>
