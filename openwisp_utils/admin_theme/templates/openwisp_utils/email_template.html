@@ -30,8 +30,8 @@
       text-align: center;
     }
 
-    .email-info .alert{
-      margin-bottom:20px !important;
+    .email-info .alert {
+      margin-bottom: 20px !important;
     }
 
     .container {
@@ -48,7 +48,7 @@
       border: outset 1px #eee;
       margin: 0px auto 1rem auto;
       line-height: 27px;
-      {% comment %} box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08), 0px 8px 8px -4px rgba(16, 24, 40, 0.03); {% endcomment %}
+      box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08), 0px 8px 8px -4px rgba(16, 24, 40, 0.03);
     }
 
     .icon-container {
@@ -158,30 +158,40 @@
   <div class="container">
     {% block logo %}
     <div class="logo-container">
-        <img src="{{ logo_url }}" alt="Logo" class="logo">
+      <img src="{{ logo_url }}" alt="Logo" class="logo">
     </div>
     {% endblock logo %}
+
     {% block email_info %}
-      <div class="email-info">This email is sent to <u>{{ recipients }}</u> from Nexapp Controller</div>
+    <div class="email-info">
+      This email is sent to <u>{{ recipients }}</u> from Nexapp Controller
+    </div>
     {% endblock email_info %}
+
     <div class="box">
       {% block mail_header %}
       <div class="icon-container">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-
-        {% comment %} <img src="{{ site_url }}{% static "ui/openwisp/images/email.png" %}" alt="email icon"> {% endcomment %}
+        <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
-      <div class="sysname-container">Nexapp Controller</div>
+
+      <!-- UPDATED AS REQUESTED -->
+      <div class="sysname-container">
+        User Signup Email Verification — {{ recipients }}
+      </div>
+
       {% if title %}
       <div class="email-title">{{ title }}</div>
       {% endif %}
+
       {% if subtitle %}
       <div class="subtitle">{{ subtitle }}</div>
       {% endif %}
       {% endblock mail_header %}
+
       {% block mail_body %}
       <div class="msg">{{ message | safe }}</div>
       {% endblock mail_body %}
+
       {% block call_to_action %}
       {% if call_to_action_url %}
       <div class="call-to-action">
@@ -190,14 +200,16 @@
       {% endif %}
       {% endblock call_to_action %}
     </div>
+
     {% block mail_footer %}
-      {% if footer %}
-        <div class="footer">
-          {{ footer | safe }}
-        </div>
-      {% endif %}
-      {% endblock mail_footer %}
-    {% endblock body %}
+    {% if footer %}
+    <div class="footer">
+      {{ footer | safe }}
+    </div>
+    {% endif %}
+    {% endblock mail_footer %}
   </div>
+  {% endblock body %}
 </body>
+
 </html>
