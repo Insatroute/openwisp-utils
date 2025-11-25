@@ -2,6 +2,7 @@
 {% load l10n %}
 {% load static %}
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,130 +10,158 @@
   {% block styles %}
   <style type="text/css">
     :root {
-      --muted-fg-color: #777;
-      --loud-fg-color: #333;
+      --muted-fg-color: #667085;
+      --loud-fg-color: #101828;
       --muted-bg-color: #F2F4F7;
       --muted-border-color: #D0D5DD;
+      --primary-bg-color: #0f6aa6;
+      --page-bg-color: #e5edf5;
     }
 
     body {
       min-width: 250px;
-      background: #fff;
+      background: var(--page-bg-color);
       margin: 0;
-      padding: 0;
-    }
-
-    .email-info {
-      margin: 0.9rem auto;
-      font-size: 0.8em;
-      font-weight: 400;
-      color: #777;
-      text-align: center;
-    }
-
-    .email-info .alert {
-      margin-bottom: 20px !important;
+      padding: 24px 10px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     .container {
-      background: #fff;
-      padding: 20px 0;
-    }
-
-    .box {
-      width: auto;
-      max-width: 700px;
-      padding: 1.5rem 0.94rem 2.1rem 0.94rem;
-      background-color: #fff;
-      border-radius: 12px;
-      border: outset 1px #eee;
-      margin: 0px auto 1rem auto;
-      line-height: 27px;
-      box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08), 0px 8px 8px -4px rgba(16, 24, 40, 0.03);
-    }
-
-    .icon-container {
+      max-width: 720px;
       margin: 0 auto;
-      width: 48px;
-      height: 48px;
-      background-color: rgba(254, 240, 199, 1);
-      border-radius: 24px;
-      text-align: center;
-    }
-
-    .icon-container img {
-      width: 24px;
-      height: 18px;
-      margin-top: 15px;
-    }
-
-    .sysname-container {
-      width: fit-content;
-      margin: 1rem auto 0 auto;
-      background-color: #F2F4F7;
-      padding: 0 0.5em;
-      border: solid #D0D5DD 1px;
-      border-radius: 16px;
-      color: #777;
-      font-size: 0.75rem;
-      line-height: 1.23rem;
     }
 
     .logo-container {
       text-align: center;
+      margin-bottom: 10px;
     }
 
     .logo {
       width: 150px;
       height: auto;
+      display: inline-block;
+    }
+
+    .email-info {
+      margin: 0 auto 18px auto;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted-fg-color);
+      text-align: center;
+    }
+
+    .email-info a {
+      color: #0f6aa6;
+      text-decoration: underline;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow:
+        0 24px 40px rgba(15, 23, 42, 0.18),
+        0 4px 6px rgba(15, 23, 42, 0.06);
+      padding: 32px 32px 28px 32px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 22px 16px 20px 16px;
+      }
+    }
+
+    .icon-container {
+      margin: 0 auto 14px auto;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(252, 211, 77, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-container .fa {
+      font-size: 22px;
+      color: #b45309;
+    }
+
+    .sysname-container {
+      width: fit-content;
+      margin: 0 auto 18px auto;
+      background-color: var(--muted-bg-color);
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--muted-border-color);
+      color: var(--muted-fg-color);
+      font-size: 12px;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+
+    .sysname-container strong {
+      color: #0f6aa6;
+      font-weight: 600;
+    }
+
+    .email-title {
+      text-align: center;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--loud-fg-color);
+      margin: 0 0 4px 0;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--muted-fg-color);
+      margin: 0 0 22px 0;
+    }
+
+    .msg {
+      color: #111827;
+      margin: 0 0 20px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .msg p {
+      margin: 0 0 10px 0;
+    }
+
+    .msg p:last-child {
+      margin-bottom: 0;
     }
 
     .call-to-action {
       text-align: center;
-      margin-top: 2.5rem !important;
-    }
-
-    .email-title {
-      font-weight: 600;
-      font-size: 1.13rem;
-      width: fit-content;
-      margin: auto;
-      margin-top: 1rem;
-      color: #101828;
-    }
-
-    .subtitle {
-      font-weight: 400;
-      font-size: 0.88rem;
-      width: fit-content;
-      margin: 0 auto 0.88em auto;
-      color: #475467;
-    }
-
-    .msg {
-      color: #000000;
-      margin: 20px 0;
-      font-size: medium;
+      margin: 10px 0 10px 0;
     }
 
     .btn {
       appearance: button;
       text-decoration: none;
-      border: solid #D0D5DD 1px;
-      border-radius: 8px;
+      border-radius: 999px;
       font-weight: 600;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      padding: 0.63rem 1rem;
-      color: #344054 !important;
+      font-size: 15px;
+      padding: 10px 32px;
+      color: #ffffff !important;
+      background: var(--primary-bg-color);
+      border: 1px solid #0b4e7a;
       box-sizing: border-box;
-      box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), inset 0px 0px 0px 1px rgba(16, 24, 40, 0.18), inset 0px -2px 0px rgba(16, 24, 40, 0.05);
+      box-shadow:
+        0 10px 20px rgba(15, 106, 166, 0.25),
+        0 2px 4px rgba(15, 106, 166, 0.3);
+      display: inline-block;
     }
 
     .btn:hover,
     .btn:focus {
-      border-color: #000;
-      color: #000;
+      background: #0b4e7a;
+      border-color: #083653;
+      color: #ffffff !important;
     }
 
     a:link:hover {
@@ -140,43 +169,49 @@
     }
 
     .footer {
-      height: 40px;
       text-align: center;
-      color: #475467;
+      color: #98a2b3;
+      font-size: 12px;
+      margin-top: 18px;
     }
 
     .footer p {
-      font-size: 12px;
-      margin: 0 auto;
-      line-height: 20px;
+      margin: 0 0 4px 0;
+      line-height: 1.4;
     }
   </style>
   {% endblock styles %}
 </head>
+
 <body>
   {% block body %}
   <div class="container">
+
     {% block logo %}
     <div class="logo-container">
-      <img src="{{ logo_url }}" alt="Logo" class="logo">
+      <img src="{{ logo_url }}" alt="Nexapp Logo" class="logo">
     </div>
     {% endblock logo %}
 
     {% block email_info %}
     <div class="email-info">
-      This email is sent to <u>{{ recipients }}</u> from Nexapp Controller
+      This email is sent to
+      <a href="mailto:{{ recipients }}">{{ recipients }}</a>
+      from Nexapp Controller
     </div>
     {% endblock email_info %}
 
-    <div class="box">
+    <div class="card">
+
       {% block mail_header %}
       <div class="icon-container">
         <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
 
-      <!-- UPDATED AS REQUESTED -->
+      <!-- pill with dynamic recipient -->
       <div class="sysname-container">
-        User Signup Email Verification — {{ recipients }}
+        User Signup Email Verification —
+        <strong>{{ recipients }}</strong>
       </div>
 
       {% if title %}
@@ -189,13 +224,18 @@
       {% endblock mail_header %}
 
       {% block mail_body %}
-      <div class="msg">{{ message | safe }}</div>
+      <!-- dynamic, can contain HTML -->
+      <div class="msg">
+        {{ message|safe }}
+      </div>
       {% endblock mail_body %}
 
       {% block call_to_action %}
       {% if call_to_action_url %}
       <div class="call-to-action">
-        <a href="{{ call_to_action_url }}" class="btn">{{ call_to_action_text }}</a>
+        <a href="{{ call_to_action_url }}" class="btn">
+          {{ call_to_action_text }}
+        </a>
       </div>
       {% endif %}
       {% endblock call_to_action %}
@@ -204,7 +244,7 @@
     {% block mail_footer %}
     {% if footer %}
     <div class="footer">
-      {{ footer | safe }}
+      {{ footer|safe }}
     </div>
     {% endif %}
     {% endblock mail_footer %}
