@@ -96,6 +96,7 @@
       font-size: 12px;
       line-height: 1.3;
       white-space: nowrap;
+      text-align: center;
     }
 
     .sysname-container strong {
@@ -187,11 +188,11 @@
   <div class="container">
 
     {% block logo %}
-    <div class="logo-container">
+    <!-- <div class="logo-container">
       <img
         src="{% if logo_url %}{{ logo_url }}{% else %}https://nexapp.co.in/wp-content/uploads/2021/10/Nexapp-Logo-Finalwith-Register-01-1.png{% endif %}"
         alt="Nexapp Logo" class="logo">
-    </div>
+    </div> -->
     {% endblock logo %}
 
     {% block email_info %}
