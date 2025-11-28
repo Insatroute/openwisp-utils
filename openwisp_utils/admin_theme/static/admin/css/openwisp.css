@@ -1956,6 +1956,12 @@ body::-webkit-scrollbar {
   -webkit-mask-image: url(../../ui/openwisp/images/node.svg);
 }
 
+/* SLA Metrics*/
+.ow-sla-metrics {
+  mask-image: url(../../ui/openwisp/images/sla.png);
+  -webkit-mask-image: url(../../ui/openwisp/images/sla.png);
+}
+
 .flex-container #id_mode, #id_vpn_type, #id_dpdaction, #id_ike_version, 
 #id_ike_encryption_algorithm, #id_ike_integrity_algorithm, #id_ike_dh_group, 
 #id_ike_lifetime, #id_esp_encryption_algorithm, #id_esp_integrity_algorithm, 
