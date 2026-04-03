@@ -439,6 +439,7 @@ function showActiveItems() {
   var pathname = window.location.pathname;
   const regex = new RegExp(/[\d\w-]*\/change\//);
   pathname = pathname.replace(regex, "");
+  pathname = pathname.replace(/add\/$/, "");
   var activeLink = document.querySelector(`.nav a[href="${pathname}"]`);
   if (!activeLink) {
     return;
