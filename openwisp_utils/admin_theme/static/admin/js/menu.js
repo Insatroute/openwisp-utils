@@ -441,6 +441,19 @@ function showActiveItems() {
   pathname = pathname.replace(regex, "");
   pathname = pathname.replace(/add\/$/, "");
   var activeLink = document.querySelector(`.nav a[href="${pathname}"]`);
+  // Fallback: if no exact match, try matching by app prefix
+  // e.g. /admin/sdwan_tunnel/nsbonddevice/ -> find any menu link under /admin/sdwan_tunnel/
+  if (!activeLink) {
+    var parts = pathname.replace(/\/$/, "").split("/");
+    while (parts.length > 2 && !activeLink) {
+      parts.pop();
+      var prefix = parts.join("/") + "/";
+      var candidates = document.querySelectorAll(`.nav a.mg-link[href^="${prefix}"]`);
+      if (candidates.length > 0) {
+        activeLink = candidates[0];
+      }
+    }
+  }
   if (!activeLink) {
     return;
   }
